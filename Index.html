@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gestion des Dépenses de Papier</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-light p-4">
+    <div class="container">
+      <h2 class="text-center mb-4">Gestion de Dépenses de Papier</h2>
+
+      <!-- Formulaire -->
+      <form id="formDepense" class="row g-3 mb-3">
+        <div class="col-md-2">
+          <input type="date" id="date" class="form-control" required readonly />
+        </div>
+        <div class="col-md-2">
+          <input
+            type="text"
+            id="service"
+            class="form-control"
+            placeholder="Service"
+            required
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            type="text"
+            id="utilisation"
+            class="form-control"
+            placeholder="Utilisation"
+            required
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            type="number"
+            id="nombre"
+            class="form-control"
+            placeholder="Nombre"
+            required
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            type="text"
+            id="nom"
+            class="form-control"
+            placeholder="Nom"
+            required
+          />
+        </div>
+        <div class="col-md-2">
+          <button type="submit" id="submitBtn" class="btn btn-primary w-100">
+            Ajouter
+          </button>
+        </div>
+      </form>
+
+      <!-- Recherche + Export -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <input
+            type="text"
+            id="searchInput"
+            class="form-control"
+            placeholder="Rechercher..."
+          />
+        </div>
+        <div class="col-md-6 text-end">
+          <button class="btn btn-primary me-2" onclick="exporterPDF()">
+            Exporter PDF
+          </button>
+          <button class="btn btn-success me-2" onclick="exporterExcel()">
+            Exporter Excel
+          </button>
+          <button class="btn btn-secondary" onclick="exporterJSON()">
+            Exporter JSON
+          </button>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="mb-3">
+        <strong
+          >Total de papiers utilisés : <span id="totalPapiers">0</span></strong
+        >
+      </div>
+
+      <!-- Tableau -->
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Date</th>
+            <th>Service</th>
+            <th>Utilisation</th>
+            <th>Nombre</th>
+            <th>Nom</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Scripts locaux -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jspdf.umd.min.js"></script>
+    <script src="assets/js/jspdf.plugin.autotable.min.js"></script>
+    <script src="assets/js/xlsx.full.min.js"></script>
+    <script src="App.js"></script>
+  </body>
+</html>
